@@ -11,22 +11,32 @@ class Resource(ABC):
     # See whether the other resource provided is the same resource as this
     def same_type(other_resource):
         return self.name == other_resource.name
-        
+    
+    
+    # Functions to allow hashing
+    def __hash__(self):
+        return hash(self.name)
+    
+    def __eq__(self, other):
+        return self.name == other.name
+    
+    def __ne__(self, other):
+        return self.name != other.name
         
         
 class Scorable(Resource):
     # Suggested trade value (anchored to 1 victory point = 1)
-    def tradeValue():
+    def trade_value():
         pass
         
     # Victory point total of the resource at the end of the game
-    def scoringValue():
+    def scoring_value():
         if self.name == 'victory point':
-            return tradeValue()
+            return trade_value()
         else:
-            return tradeValue()/2
+            return trade_value()/2
 
-    def isWild():
+    def is_wild():
         pass
         
 
@@ -34,25 +44,25 @@ class Scorable(Resource):
 
 # brown, white, green, small grey
 class SmallCube(Scorable):
-    def tradeValue():
+    def trade_value():
         return 1/3
         
-    def isWild():
+    def is_wild():
         return self.name == 'small grey'
         
 
 # yellow, black, blue, large grey
 class LargeCube(Scorable):
-    def tradeValue():
+    def trade_value():
         return 1/2
         
-    def isWild():
+    def is_wild():
         return self.name == 'large grey'
         
 
 # ship, octagon, victory point
 class OtherScorable(Scorable):
-    def tradeValue():
+    def trade_value():
         if self.name == 'ship':
             return 1/3
         elif self.name == 'octagon' or self.name == 'victory point':
@@ -60,5 +70,5 @@ class OtherScorable(Scorable):
         else:
             return 0
     
-    def isWild():
+    def is_wild():
         return False
