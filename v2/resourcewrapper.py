@@ -1,4 +1,4 @@
-
+from resource import *
 
 
 def change_to_new_resource_name(old_resource_name):
