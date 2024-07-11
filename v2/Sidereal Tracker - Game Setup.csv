@@ -1,0 +1,24 @@
+,,,,
+Species,Starting Resources,Bid Tiebreaker,Colony Support,
+Caylion Plutocracy,"1 colony, 2 black, 5 green, 4 white, 2 brown, 1 ship",1,3,
+Eni Et Ascendancy,"1 colony, 1 blue, 2 brown, 2 white, 1 green, 1 ship",3,3,
+Faderan Conclave,"1 colony, 1 research team, 1 octagon, 1 blue, 1 yellow, 2 ship, 1 brown, 3 white",7,4,
+Im'dril Nomads,"1 research team, 1 octagon, 1 blue, 1 yellow, 1 black, 4 ship, 2 green, 2 white, 3 brown",8,0,
+Kjasjavikalimm Directorate,"2 colony, 1 blue, 2 yellow, 2 black, 4 ship, 1 green, 1 white, 2 brown",6,6,
+Kt'zr'kt'rtl Adhocracy,"1 colony, 1 research team, 1 octagon, 1 blue, 1 yellow, 1 black, 3 green, 2 white, 3 brown",Infinity,Infinity,
+Unity,"1 colony, 1 research team, 1 octagon, 3 wild large, 4 wild small",4,1,
+Yengii Society,"1 colony, 1 research team, 1 octagon, 1 blue, 2 yellow, 1 black, 1 green, 1 white, 1 brown",5,3,
+Zeth Anocracy,"1 colony, 1 research team, 2 blue, 1 yellow, 2 black, 1 ship, 1 green, 1 white",2,3,
+,,,,
+,,,,
+,,,,
+,,,,
+Players,Colony Bid Track,Research Bid Track,Sharing Bonus,Yengii Sharing Bonus
+3,"1, 2, 3","1, 2, 3","6, 5, 4, 4, 3, 2","3, 2, 2, 1, 1, 0"
+4,"1, 1, 2, 3","1, 1, 2, 3","6, 5, 4, 4, 3, 2","3, 2, 2, 1, 1, 0"
+5,"1, 1, 2, 3, 3","1, 1, 2, 3, 3","6, 6, 5, 4, 3, 1","3, 2, 1, 1, 1, 0"
+6,"1, 1, 1, 2, 3, 3","1, 1, 1, 2, 3, 3","6, 6, 5, 4, 2, 1","3, 2, 1, 1, 0, 0"
+7,"1, 1, 1, 2, 2, 3, 4","1, 1, 1, 2, 2, 3, 4","7, 6, 5, 4, 2, 0","2, 2, 1, 1, 0, 0"
+8,"1, 1, 1, 1, 2, 2, 3, 4","1, 1, 1, 1, 2, 2, 3, 4","7, 6, 5, 4, 2, 0","2, 2, 1, 1, 0, 0"
+9,"1, 1, 1, 1, 2, 2, 3, 4, 4","1, 1, 1, 1, 2, 2, 3, 4, 4","7, 6, 5, 4, 2, 0","2, 2, 1, 1, 0, 0"
+10,"1, 1, 1, 1, 1, 2, 2, 3, 4, 4",,,
