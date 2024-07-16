@@ -5,8 +5,12 @@ class ResourceCollection():
     def __init__(self):
         self.collection = {}
         
-    def __init__(self, other_collection: dict):
-        self.collection = other_collection
+    # Copies other_collection if not none, otherwise has its contents be dictionary_representation
+    def __init__(self, other_collection=None, dictionary_representation={}):
+        if other_collection != None:
+            self.collection = other_collection.collection
+        else:
+            self.collection = dictionary_representation
     
     
     # Adds the resource into the resource collection
@@ -27,7 +31,7 @@ class ResourceCollection():
     # Must already be in internal representation
     def cleanup(self, res: Resource):
         if self.collection[res] == 0:
-            del self.collection[res]           
+            del self.collection[res]   
     
     # Returns true if the collection has at least n copies of the resource, false otherwise
     def has_resource(self, res: Resource, n: int):

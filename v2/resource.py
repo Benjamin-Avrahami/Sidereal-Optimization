@@ -31,13 +31,21 @@ class Scorable(Resource):
         
     # Victory point total of the resource at the end of the game
     def scoring_value():
-        if self.name == 'victory point':
-            return trade_value()
+        if self.get_name() == 'victory point':
+            return self.trade_value()
         else:
-            return trade_value()/2
+            return self.trade_value()/2
+            
+    # The wild type in the class
+    def wild_type():
+        pass
+        
+    # The overarching name for any element of this class
+    def generic_name():
+        return "scorable"
 
     def is_wild():
-        pass
+        return self.get_name() == self.wild_type()
         
 
 
@@ -47,8 +55,11 @@ class SmallCube(Scorable):
     def trade_value():
         return 1/3
         
-    def is_wild():
-        return self.name == 'small grey'
+    def generic_name():
+        return "small"
+        
+    def wild_type():
+        return 'small grey'
         
 
 # yellow, black, blue, large grey
@@ -56,19 +67,23 @@ class LargeCube(Scorable):
     def trade_value():
         return 1/2
         
-    def is_wild():
-        return self.name == 'large grey'
+    def generic_name():
+        return "large"
+        
+    def wild_type():
+        return 'large grey'
         
 
 # ship, octagon, victory point
 class OtherScorable(Scorable):
     def trade_value():
-        if self.name == 'ship':
+        if self.get_name() == 'ship':
             return 1/3
-        elif self.name == 'octagon' or self.name == 'victory point':
+        elif self.get_name() == 'octagon' or self.get_name() == 'victory point':
             return 1
         else:
             return 0
     
-    def is_wild():
-        return False
+    # No wild values for the other scorable options
+    def wild_type():
+        return ""

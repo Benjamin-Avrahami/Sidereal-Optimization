@@ -41,3 +41,10 @@ class Converter():
             return (True, ex_output)
         except:
             return (False, ResourceCollection())
+    
+    # Doubles the inputs and outputs of the converter
+    def double(self):
+        input_copy = ResourceCollection(other_collection=resource_input)
+        output_copy = ResourceCollection(other_collection=resource_output)
+        resource_input.add_all(input_copy)
+        resource_output.add_all(output_copy)
