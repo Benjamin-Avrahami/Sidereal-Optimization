@@ -11,7 +11,7 @@ class ResourceCollection():
     
     # Adds the resource into the resource collection
     def add(self, res: Resource):
-        self.collection[res] = self.collection.get(res,0) + 1
+        self.add(res, 1)
         
     # Adds n >= 0 copies of the resource into the resource collection
     def add(self, res: Resource, n: int):
@@ -21,36 +21,43 @@ class ResourceCollection():
     def add_all(self, other: ResourceCollection):
         for res in other.collection:
             add(res, other.collection[res])
-            
+
+           
     # Removes from internal representation if no copies are in collection
     # Must already be in internal representation
     def cleanup(self, res: Resource):
         if self.collection[res] == 0:
-            del self.collection[res]
-            
+            del self.collection[res]           
+    
+    # Returns true if the collection has at least n copies of the resource, false otherwise
+    def has_resource(self, res: Resource, n: int):
+        return self.get(res, 0) >= n
+    
+    # Returns true if this collection has at least as many resources of each type as the other collection
+    # Returns false if there is any resource that this collection has fewer of than the other collection
+    def has_all_resources(self, other: ResourceCollection):
+        for res in other.collection:
+            if self.collection.get(res,0) < other.collection[res]:
+                return False
+        return True
             
     # Removes the resource from the resource collection
     # If the resource is not in the collection, throws a ValueError and does not change
     def remove(self, res: Resource):
-        if self.collection.get(res,0) < 1:
-            throw ValueError("Not enough resources")
-        self.collection[res] = self.collection.get(res,0) - 1
-        cleanup(res)
+        self.remove(res, 1)
             
     # Removes n >= 0 copies of the resource from the resource collection
     # If enough of the resource is not in the collection, throws a ValueError and does not change
     def remove(self, res: Resource, n: int):
-        if self.collection.get(res,0) < n:
-            throw ValueError("Not enough resources")
+        if not self.has_resource(res, n):
+            raise ValueError("Not enough resources")
         self.collection[res] = self.collection.get(res,0) - n
-        cleanup(res)
+        self.cleanup(res)
     
     # Removes every resource from the other resource collection from this one
     # If not possible, throws a ValueError and does not change
     def remove_all(self, other: ResourceCollection):
-        for res in other.collection:
-            if self.collection.get(res,0) < other.collection[res]:
-                throw ValueError("Not enough of " + res.get_name())
+        if not self.has_all_resources(other):
+            raise ValueError("Not enough resources")
         for res in other_collection:
-            self.collection[res] = self.collection.get(res,0) - other.collection[res]
-            cleanup(res)
+            self.remove(res, other.collection[res]) # Ends up checking twice for presence in collection, but does not change execution
