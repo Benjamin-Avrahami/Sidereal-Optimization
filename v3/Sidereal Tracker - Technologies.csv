@@ -1,0 +1,42 @@
+Name,Tier,Option 1,Option 2,Option 3,Reward (+sharing bonus),Invents
+Organic Chemists,1,6 brown,4 blue,None,1 VP,Genetic Engineering
+Computational Theoreticians,1,6 white,4 blue,None,1 VP,Quantum Computers
+Mechanical Engineers,1,4 yellow,2 octagon,None,1 VP,Nanotechnology
+Linguistic Analysts,1,6 green,4 black,None,1 VP,Universal Translator
+Sociologists,1,6 white,4 black,None,1 VP,Ubiquitous Cultural Repository
+Nuclear Physicists,1,6 brown,4 yellow,None,1 VP,Atomic Transmutation
+Pharmaceutical Scientists,1,6 green,2 octagon,None,1 VP,Clinical Immortality
+Quantum Theoreticians,2,9 green,6 blue,None,3 VP,Antimatter Power
+Gravitic Topologists,2,12 brown,12 green,None,4 VP,Singularity Control
+Quantum Statisticians,2,12 white,4 octagon,None,4 VP,Achronal Analysis
+N-Space Mathematicians,2,8 blue,4 octagon,None,4 VP,Hyperspace Mining
+Comparative Physiologists,2,9 brown,6 black,None,3 VP,Interspecies Medical Exchange
+Metaethicists,2,7 yellow,7 black,None,4 VP,Cross Species Ethical Equality
+Organic Architects,2,9 white,6 yellow,None,3 VP,Organic Construction
+Subquantum Manipulators,3,18 green,18 white,None,9 VP,Matter Generation
+Cultural Diffusionologists,3,15 green,10 yellow,None,7 VP,Xeno Cultural Exchange
+Psychohistorians,3,12 black,6 octagon,None,9 VP,Social Exodus
+Memetic Artists,3,18 brown,18 white,None,9 VP,Galactic Telecomm Control
+Chronophysicists,3,18 brown,6 octagon,None,9 VP,Temporal Dilation
+Interspecies Managers,3,11 blue,11 black,None,8 VP,Poly Species Corporations
+Stellar Architectural Planners,3,14 blue,14 yellow,None,11 VP,Megastructures
+Singularity Control Technicians,4,20 black,20 blue,10 octagon,16 VP,None
+Mesoscale Geoengineers,4,27 brown,18 yellow,9 octagon,14 VP,None
+Metacognitive Ecologists,4,30 green,20 blue,10 octagon,16 VP,None
+In Situ Genetic Editors,4,24 green,24 brown,16 black,12 VP,None
+Macroscale Biophysicists,4,27 brown,18 black,18 blue,14 VP,None
+Tachyon Astrotechnicians,4,30 green,20 yellow,20 blue,16 VP,None
+Chaos Theoreticians,4,18 green,12 yellow,12 black,8 VP,None
+Plasma Auxonologists,4,24 green,24 brown,16 yellow,12 VP,None
+Fractal Microbiologists,4,21 white,21 green,14 blue,10 VP,None
+Autonomic Teleoperators,4,12 blue,12 yellow,12 black,8 VP,None
+Psychohistorical Ethicists,4,27 green,27 white,18 black,14 VP,None
+Stellar Plasma Flow Engineers,4,21 white,14 blue,14 black,10 VP,None
+Oceanographic Biotechnicians,4,18 brown,12 blue,6 octagon,8 VP,None
+Cultural Polymorphologists,4,18 white,18 brown,6 octagon,8 VP,None
+Interphasal Theoreticians,4,24 brown,24 green,8 octagon,12 VP,None
+Recursive Metathereticians,4,30 white,30 brown,20 black,16 VP,None
+Applied Topologists,4,30 white,30 brown,20 yellow,16 VP,None
+Reconstructive Paleobotanists,4,21 white,21 green,7 octagon,10 VP,None
+Sapience Developers,4,21 white,14 yellow,14 black,10 VP,None
+Abiotic Pathologists,4,24 white,16 yellow,8 octagon,12 VP,None

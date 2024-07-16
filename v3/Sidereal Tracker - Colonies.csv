@@ -1,0 +1,54 @@
+Name,Owner,Climate,Cost of Entering Play,Input,Output,Upgrade Cost,Upgraded Climate,Upgraded Input,Upgraded Output
+Kz'tlr,Kt'zr'kt'rtl,jungle,1 yellow,1 white,1 black,None,None,None,None
+Kr'xn'xx,Kt'zr'kt'rtl,ice,1 yellow,1 brown,1 blue,None,None,None,None
+Tk't!'zk,Kt'zr'kt'rtl,desert,2 yellow,None,1 brown,None,None,None,None
+Kln'qn,Kt'zr'kt'rtl,ice,2 yellow,None,1 white,None,None,None,None
+Nx'dr,Kt'zr'kt'rtl,desert,1 yellow,1 green,1 blue,None,None,None,None
+Nz'tt,Kt'zr'kt'rtl,ocean,1 yellow,1 blue,"1 white, 1 brown",None,None,None,None
+Kt'dq'rn'nr,Kt'zr'kt'rtl,ocean,1 yellow,1 brown,1 black,None,None,None,None
+Zd'nx,Kt'zr'kt'rtl,jungle,1 yellow,1 black,"1 white, 1 green",None,None,None,None
+Gz'zd,Kt'zr'kt'rtl,jungle,2 yellow,None,1 white,None,None,None,None
+!in'zr'kz,Kt'zr'kt'rtl,desert,2 yellow,"1 white, 1 brown","1 yellow, 1 black",None,None,None,None
+Nx'xt'!in,Kt'zr'kt'rtl,ice,2 yellow,None,1 brown,None,None,None,None
+Tn'rg'tx'tc,Kt'zr'kt'rtl,desert,1 yellow,1 black,"1 white, 1 green",None,None,None,None
+Nz'cht'qt'rz,Kt'zr'kt'rtl,ocean,2 yellow,1 yellow,1 octagon,None,None,None,None
+Alnitak,None,ocean,None,None,1 green,1 octagon,ice,1 green,1 octagon
+Pollux,None,desert,None,None,1 white,1 blue,ocean,None,1 blue
+Polaris,None,ocean,None,None,1 brown,1 yellow,desert,None,1 desert
+Alioth,None,ice,None,None,1 white,2 brown,desert,None,"1 white, 1 brown"
+Rigel,None,jungle,None,None,1 green,1 blue,ocean,None,1 blue
+Spica,None,ice,None,None,1 white,2 green,ocean,None,"1 white, 1 green"
+Sirius,None,jungle,None,None,1 green,1 black,ice,None,1 black
+Mirfak,None,jungle,None,None,1 green,1 black,ice,None,1 black
+El Nath,None,jungle,None,None,1 green,1 blue,ocean,None,1 blue
+Betelgeuse,None,ice,None,None,1 white,1 octagon,jungle,1 white,1 octagon
+Fomalhaut,None,ice,None,None,1 brown,1 octagon,desert,1 brown,1 octagon
+Procyon,None,desert,None,None,1 brown,1 yellow,ocean,None,1 yellow
+Regulus,None,jungle,None,None,1 white,1 yellow,desert,None,1 yellow
+Acrux,None,desert,None,None,1 brown,2 white,ice,None,"1 white, 1 brown"
+Adara,None,jungle,None,None,1 green,2 white,ice,None,"1 white, 1 green"
+Alnair,None,ice,None,None,1 brown,1 black,ocean,None,1 black
+Capella,None,ocean,None,None,1 green,1 blue,jungle,None,1 blue
+Sargas,None,desert,None,None,1 brown,1 yellow,jungle,None,1 yellow
+Bellatrix,None,ocean,None,None,1 white,1 yellow,desert,None,1 yellow
+Koo She,None,desert,None,None,1 brown,1 blue,ocean,None,1 blue
+Hadar,None,ocean,None,None,1 green,1 yellow,jungle,None,1 yellow
+Gacrux,None,ice,None,None,1 white,1 yellow,desert,None,1 yellow
+Toliman,None,desert,None,None,1 white,1 black,ice,None,1 black
+Wezen,None,jungle,None,None,1 brown,1 black,ocean,None,1 black
+Altair,None,ocean,None,None,1 green,1 yellow,desert,None,1 yellow
+Aldebaran,None,jungle,None,None,1 brown,1 yellow,desert,None,1 yellow
+Shaula,None,desert,None,None,1 brown,2 green,jungle,None,"1 green, 1 brown"
+Antares,None,jungle,None,None,1 green,1 octagon,ice,1 green,1 octagon
+Atria,None,jungle,None,None,1 green,1 yellow,desert,None,1 yellow
+Arcturus,None,ice,None,None,1 brown,1 blue,ocean,None,1 blue
+Castor,None,ocean,None,None,1 white,1 black,ice,None,1 black
+Miaplacidus,None,ocean,None,None,1 green,1 black,desert,None,1 black
+Benetnasch,None,ocean,None,None,1 green,1 blue,jungle,None,1 blue
+Mimosa,None,ice,None,None,1 white,1 blue,jungle,None,1 blue
+Peacock,None,desert,None,None,1 brown,1 black,jungle,None,1 black
+Achernar,None,ice,None,None,1 white,1 blue,jungle,None,1 blue
+Deneb,None,ice,None,None,1 white,1 black,ocean,None,1 black
+Vega,None,desert,None,None,1 brown,1 blue,jungle,None,1 blue
+Canopus,None,desert,None,None,1 brown,1 octagon,ice,1 brown,1 octagon
+Suhail,None,ocean,None,None,1 white,1 black,ice,None,1 black
