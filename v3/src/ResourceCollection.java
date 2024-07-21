@@ -1,3 +1,4 @@
+
 import java.util.*;
 import java.io.*;
 
@@ -17,6 +18,17 @@ public class ResourceCollection {
 	// Copies the map representation into the internal representation
 	public ResourceCollection(Map<Resource, Integer> mapRepresentation) {
 		this.collection = new HashMap<Resource, Integer>(mapRepresentation);
+	}
+
+	public boolean equals(ResourceCollection otherCollection) {
+		Iterator<Resource> itr = resourceIterator();
+		while (itr.hasNext()) {
+			Resource r = itr.next();
+			if (this.getAmount(r) != otherCollection.getAmount(r)) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	// Returns an iterator over the (distinct) resources in the collection
@@ -65,6 +77,15 @@ public class ResourceCollection {
 			}
 		}
 		return true;
+	}
+
+	// Returns the amount of the resource contained in the collection
+	// Returns 0 if not present
+	public int getAmount(Resource res) {
+		if (!collection.containsKey(res)) {
+			return 0;
+		}
+		return collection.get(res);
 	}
 
 	// Removes from internal representation if no copies are in collection

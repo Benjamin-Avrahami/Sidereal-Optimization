@@ -1,4 +1,3 @@
-
 public class Converter {
 	private ResourceCollection resourceInput;
 	private ResourceCollection resourceOutput;
