@@ -1,0 +1,5 @@
+#!/bin/bash
+scriptpath=$(dirname "$0")
+
+javac $scriptpath/src/*.java
+java -cp "$scriptpath/src" $1
