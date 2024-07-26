@@ -3,22 +3,7 @@ import java.util.*;
 import java.io.*;
 
 
-public class ResourceCollection {
-	private Map<Resource, Integer> collection;
-
-	public ResourceCollection() {
-		collection = new HashMap<Resource, Integer>();
-	}
-
-	// Copy constructor of otherCollection
-	public ResourceCollection(ResourceCollection otherCollection) {
-		this.collection = new HashMap<Resource, Integer>(otherCollection.collection);
-	}
-
-	// Copies the map representation into the internal representation
-	public ResourceCollection(Map<Resource, Integer> mapRepresentation) {
-		this.collection = new HashMap<Resource, Integer>(mapRepresentation);
-	}
+public abstract class ResourceCollection {
 
 	public boolean equals(ResourceCollection otherCollection) {
 		Iterator<Resource> itr = resourceIterator();
@@ -32,9 +17,10 @@ public class ResourceCollection {
 	}
 
 	// Returns an iterator over the (distinct) resources in the collection
-	private Iterator<Resource> resourceIterator() {
-		return collection.keySet().iterator();
-	}
+	public Iterator<Resource> resourceIterator();
+	
+	// Returns whether there are any resources in the collection
+	public boolean isEmpty();
 
 	// Adds the resource into the resource collection
 	public void add(Resource res) {
@@ -42,9 +28,7 @@ public class ResourceCollection {
 	}
 
 	// Adds n >= 0 copies of the resource into the resource collection
-	public void add(Resource res, int n) {
-		collection.put(res, collection.getOrDefault(res, 0) + n);
-	}
+	public void add(Resource res, int n);
 
 	// Adds every resource in the other resource collection to this one
 	public void addAll(ResourceCollection other) {
@@ -62,9 +46,8 @@ public class ResourceCollection {
 	}
 
 	// Returns true if the collection has at least n copies of the resource, false otherwise
-	public boolean hasResource(Resource res, int n) {
-		return collection.containsKey(res) && collection.get(res) >= n;
-	}
+	public boolean hasResource(Resource res, int n);
+
 
     // Returns true if this collection has at least as many resources of each type as the other collection
     // Returns false if there is any resource that this collection has fewer of than the other collection
@@ -81,35 +64,19 @@ public class ResourceCollection {
 
 	// Returns the amount of the resource contained in the collection
 	// Returns 0 if not present
-	public int getAmount(Resource res) {
-		if (!collection.containsKey(res)) {
-			return 0;
-		}
-		return collection.get(res);
-	}
+	public int getAmount(Resource res);
 
-	// Removes from internal representation if no copies are in collection
-    // Must already be in internal representation
-	private void cleanup(Resource res) {
-		collection.remove(res, 0);
-	}
 
 	// Removes the resource from the resource collection
     // Returns true if successful, false if not (resource not in the collection)
     public boolean remove(Resource res) {
-        return this.remove(res, 1);
+        return remove(res, 1);
 	}
 
 	// Removes n >= 0 copies of the resource from the resource collection
     // Returns true if successful, false if not (not enough of the resource in the collection)
-    public boolean remove(Resource res, int n) {
-        if (!hasResource(res, n)) {
-            return false;
-		}
-        collection.put(res, collection.get(res) - n);
-        cleanup(res);
-		return true;
-	}
+    public boolean remove(Resource res, int n);
+	
 
 	// Tries to remove every resource from the other resource collection from this one
     // Returns true if successful, false if not (and does not change)
@@ -120,7 +87,7 @@ public class ResourceCollection {
 		Iterator<Resource> itr = other.resourceIterator();
 		while (itr.hasNext()) {
 			Resource r = itr.next();
-			this.remove(r, other.collection.get(r)); // Ends up checking twice for ability to remove, but does not change functionality
+			this.remove(r, other.getAmount(r)); // Ends up checking twice for ability to remove, but does not change functionality
 		}
 		return true;
 	}
@@ -131,7 +98,7 @@ public class ResourceCollection {
 		Iterator<Resource> itr = resourceIterator();
 		while (itr.hasNext()) {
 			Resource r = itr.next();
-			int amt = collection.get(r);
+			int amt = getAmount(r);
 			System.out.println("\t" + r.getName() + ": " + amt);
 		}
 		System.out.println("}");
