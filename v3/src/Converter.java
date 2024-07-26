@@ -2,9 +2,19 @@ public class Converter {
 	private ResourceCollection resourceInput;
 	private ResourceCollection resourceOutput;
 
+	public Converter() {
+		resourceInput = new ResourceCollection();
+		resourceOutput = new ResourceCollection();
+	}
+	
 	public Converter(ResourceCollection inputResources, ResourceCollection outputResources) {
 		resourceInput = new ResourceCollection(inputResources);
 		resourceOutput = new ResourceCollection(outputResources);
+	}
+	
+	public Converter getCopy() {
+		Converter conv = new Converter(this.resourceInput, this.resourceOutput);
+		return conv;
 	}
 
 	// Tries to run the converter (using the resources for inputs), then add the outputs back to the given resource set

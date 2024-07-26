@@ -1,12 +1,13 @@
 
-public class Scorable extends Resource {
+public class Scorable implements Resource {
+	private final String name;
 	private final double tradeVal;
 	private final String scorableType; // Narrow(er) category it belongs to
-	private final String coveredWild; // Wild sube that could substitute for this
+	private final String coveredWild; // Wild cube that could substitute for this
 
 	// Setting constants for each scorable type
 	public Scorable(String resourceName) {
-		super(resourceName);
+		name = resourceName;
 		if (getName().equals("brown") || getName().equals("white") || getName().equals("green") || getName().equals("small grey")) {
 			tradeVal = 1.0/3.0;
 			scorableType = "small";
@@ -32,6 +33,20 @@ public class Scorable extends Resource {
 		}
 	}
 
+	// Get the name of the resource
+	public String getName() {
+		return name;
+	}
+
+	// See whether the other resource provided is the same resource as this
+	public boolean equals(Resource otherResource) {
+		return otherResource instanceof Scorable && this.getName().equals(otherResource.getName());
+	}
+
+	// Allowing for hashing
+	public int hashCode() {
+		return name.hashCode();
+	}
 
 
 	// Suggested trade value (anchored to 1 victory point = 1)
@@ -52,11 +67,6 @@ public class Scorable extends Resource {
 	// The wild type for the class of scorable
 	public String wildType() {
 		return coveredWild;
-	}
-
-	// The overarching name for any element of this class
-	public String genericName() {
-		return "scorable";
 	}
 
 	public boolean isWild() {

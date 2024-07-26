@@ -1,23 +1,12 @@
-public class Resource {
-	private final String name;
-
-	public Resource(String resourceName) {
-		name = resourceName;
-	}
+public interface Resource {
 
 	// Get the name of the resource
-	public String getName() {
-		return name;
-	}
+	public String getName();
 
 	// See whether the other resource provided is the same resource as this
-	public boolean equals(Resource otherResource) {
-		return this.getName().equals(otherResource.getName());
-	}
-
+	public boolean equals(Resource otherResource);
+	
 	// Allowing for hashing
-	public int hashCode() {
-		return name.hashCode();
-	}
+	public int hashCode();
 
 }
