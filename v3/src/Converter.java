@@ -6,20 +6,27 @@ public class Converter {
 		resourceInput = new ResourceCollection();
 		resourceOutput = new ResourceCollection();
 	}
-	
+
 	public Converter(ResourceCollection inputResources, ResourceCollection outputResources) {
 		resourceInput = new ResourceCollection(inputResources);
 		resourceOutput = new ResourceCollection(outputResources);
 	}
-	
+
 	public Converter getCopy() {
 		Converter conv = new Converter(this.resourceInput, this.resourceOutput);
 		return conv;
 	}
 
 	// Tries to run the converter (using the resources for inputs), then add the outputs back to the given resource set
-    // Returns True if successfully executed, False if not (not enough starting resources)
+	// Returns True if successfully executed, False if not (not enough starting resources)
 	public boolean instantExecution(ResourceCollection startingResources) {
+		instantExecution(startingResources, new ResourceCollection());
+	}
+
+	// Tries to run the converter (using the starting resources for inputs), then add the outputs back to the initial resource set
+	// Does not use futureResources, only present to be compatible with delayedExecution
+  // Returns True if successfully executed, False if not (not enough starting resources)
+	public boolean instantExecution(ResourceCollection startingResources, ResourceCollection futureResources) {
 		boolean result = startingResources.removeAll(resourceInput);
 		if (!result) {
 			return false;
@@ -29,14 +36,15 @@ public class Converter {
 	}
 
 
-	// Tries to run the converter (using the resources for inputs), then returns the outputs (to be added next round)
-	// If not successfully executed (not enough starting resources), returns a blank ResourceCollection
-	public ResourceCollection delayedExecution(ResourceCollection startingResources) {
+	// Tries to run the converter (using the starting resources for inputs), then add the outputs back to the future resource set
+	// Returns True if successfully executed, False if not (not enough starting resources)
+	public boolean delayedExecution(ResourceCollection startingResources, ResourceCollection futureResources) {
 		boolean result = startingResources.removeAll(resourceInput);
 		if (!result) {
-			return new ResourceCollection();
+			return false;
 		}
-		return new ResourceCollection(resourceOutput);
+		futureResources.addAll(resourceOutput);
+		return true;
 	}
 
 
