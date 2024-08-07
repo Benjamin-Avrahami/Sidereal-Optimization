@@ -17,10 +17,10 @@ public abstract class ResourceCollection {
 	}
 
 	// Returns an iterator over the (distinct) resources in the collection
-	public Iterator<Resource> resourceIterator();
+	public abstract Iterator<Resource> resourceIterator();
 	
 	// Returns whether there are any resources in the collection
-	public boolean isEmpty();
+	public abstract boolean isEmpty();
 
 	// Adds the resource into the resource collection
 	public void add(Resource res) {
@@ -28,14 +28,14 @@ public abstract class ResourceCollection {
 	}
 
 	// Adds n >= 0 copies of the resource into the resource collection
-	public void add(Resource res, int n);
+	public abstract void add(Resource res, int n);
 
 	// Adds every resource in the other resource collection to this one
 	public void addAll(ResourceCollection other) {
 		Iterator<Resource> itr = other.resourceIterator();
 		while (itr.hasNext()) {
 			Resource r = itr.next();
-			int amt = other.collection.get(r);
+			int amt = other.getAmount(r);
 			add(r, amt);
 		}
 	}
@@ -46,7 +46,7 @@ public abstract class ResourceCollection {
 	}
 
 	// Returns true if the collection has at least n copies of the resource, false otherwise
-	public boolean hasResource(Resource res, int n);
+	public abstract boolean hasResource(Resource res, int n);
 
 
     // Returns true if this collection has at least as many resources of each type as the other collection
@@ -55,7 +55,7 @@ public abstract class ResourceCollection {
 		Iterator<Resource> itr = other.resourceIterator();
 		while (itr.hasNext()) {
 			Resource r = itr.next();
-			if (this.collection.getOrDefault(r,0) < other.collection.get(r)) {
+			if (this.getAmount(r) < other.getAmount(r)) {
 				return false;
 			}
 		}
@@ -64,7 +64,7 @@ public abstract class ResourceCollection {
 
 	// Returns the amount of the resource contained in the collection
 	// Returns 0 if not present
-	public int getAmount(Resource res);
+	public abstract int getAmount(Resource res);
 
 
 	// Removes the resource from the resource collection
@@ -75,7 +75,7 @@ public abstract class ResourceCollection {
 
 	// Removes n >= 0 copies of the resource from the resource collection
     // Returns true if successful, false if not (not enough of the resource in the collection)
-    public boolean remove(Resource res, int n);
+    public abstract boolean remove(Resource res, int n);
 	
 
 	// Tries to remove every resource from the other resource collection from this one

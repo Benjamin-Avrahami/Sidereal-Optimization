@@ -18,11 +18,13 @@ public class Player {
 	}
 	
 	public ResourceCollection getCubes() {
-		return resources.getCollectionOfType(new Scorable(""));
+		Scorable test = null;
+		return resources.getCollectionOfType(test);
 	}
 	
 	public ResourceCollection getConverters() {
-		return resources.getCollectionOfType(new GenericConverterCard());
+		GenericConverterCard test = null;
+		return resources.getCollectionOfType(test);
 	}
 	
 }

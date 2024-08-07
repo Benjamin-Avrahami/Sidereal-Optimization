@@ -11,7 +11,11 @@ public class BasicResourceCollection extends ResourceCollection {
 
 	// Copy constructor of otherCollection
 	public BasicResourceCollection(ResourceCollection otherCollection) {
-		this.collection = new HashMap<Resource, Integer>(otherCollection.collection);
+		Iterator<Resource> rscItr = otherCollection.resourceIterator();
+		while (rscItr.hasNext()) {
+			Resource r = rscItr.next();
+			add(r,otherCollection.getAmount(r));
+		}
 	}
 
 	// Copies the map representation into the internal representation

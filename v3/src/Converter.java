@@ -3,13 +3,13 @@ public class Converter {
 	private ResourceCollection resourceOutput;
 
 	public Converter() {
-		resourceInput = new ResourceCollection();
-		resourceOutput = new ResourceCollection();
+		resourceInput = new BasicResourceCollection();
+		resourceOutput = new BasicResourceCollection();
 	}
 
 	public Converter(ResourceCollection inputResources, ResourceCollection outputResources) {
-		resourceInput = new ResourceCollection(inputResources);
-		resourceOutput = new ResourceCollection(outputResources);
+		resourceInput = new BasicResourceCollection(inputResources);
+		resourceOutput = new BasicResourceCollection(outputResources);
 	}
 
 	public Converter getCopy() {
@@ -20,7 +20,7 @@ public class Converter {
 	// Tries to run the converter (using the resources for inputs), then add the outputs back to the given resource set
 	// Returns True if successfully executed, False if not (not enough starting resources)
 	public boolean instantExecution(ResourceCollection startingResources) {
-		instantExecution(startingResources, new ResourceCollection());
+		return instantExecution(startingResources, new BasicResourceCollection());
 	}
 
 	// Tries to run the converter (using the starting resources for inputs), then add the outputs back to the initial resource set
@@ -50,8 +50,8 @@ public class Converter {
 
 	// Doubles the inputs and outputs of the converter
 	public void doubleConverter() {
-		ResourceCollection inputCopy = new ResourceCollection(resourceInput);
-		ResourceCollection outputCopy = new ResourceCollection(resourceOutput);
+		ResourceCollection inputCopy = new BasicResourceCollection(resourceInput);
+		ResourceCollection outputCopy = new BasicResourceCollection(resourceOutput);
 		resourceInput.addAll(inputCopy);
 		resourceOutput.addAll(outputCopy);
 	}

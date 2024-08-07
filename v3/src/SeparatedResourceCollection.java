@@ -9,13 +9,13 @@ public class SeparatedResourceCollection extends ResourceCollection {
 	// Rule defining the groups
 	private GroupRule gr;
 
-	public SeparateResourceCollection() {
-		groups = new ArrayList<ResourceCollection> groups;
+	public SeparatedResourceCollection() {
+		groups = new ArrayList<ResourceCollection>();
 		gr = null;
 	}
 	
-	public SeparateResourceCollection(GroupRule definingRule) {
-		groups = new ArrayList<ResourceCollection> groups;
+	public SeparatedResourceCollection(GroupRule definingRule) {
+		groups = new ArrayList<ResourceCollection>();
 		gr = definingRule;
 	}
 	
@@ -39,7 +39,7 @@ public class SeparatedResourceCollection extends ResourceCollection {
 			ResourceCollection rc = groupItr.next();
 			Iterator<Resource> rscItr = rc.resourceIterator();
 			while (rscItr.hasNext()) {
-				Resource res = rsc.next();
+				Resource res = rscItr.next();
 				allResources.add(res);
 			}
 		}
@@ -51,7 +51,7 @@ public class SeparatedResourceCollection extends ResourceCollection {
 	// If no collection in the array has the same group as the resource, returns -1
 	private int groupIndex(Resource res) {
 		for (int i = 0; i < groups.size(); ++i) {
-			Resource sampleFromGroup = groups.get(i).iterator().next();
+			Resource sampleFromGroup = groups.get(i).resourceIterator().next();
 			if (gr.inSameGroup(res, sampleFromGroup)) {
 				return i;
 			}
@@ -68,7 +68,7 @@ public class SeparatedResourceCollection extends ResourceCollection {
 			rc.add(res, n);
 		}
 		else {
-			ResourceCollection rc = new ResourceCollection();
+			ResourceCollection rc = new BasicResourceCollection();
 			rc.add(res, n);
 			groups.add(rc);
 		}
