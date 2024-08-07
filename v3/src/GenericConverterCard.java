@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class ConverterSet extends ConverterCard {
+public class GenericConverterCard extends ConverterCard {
 
 	private final String unupgradedConverterName;
 	private final String upgradedConverterName;
@@ -9,7 +9,9 @@ public class ConverterSet extends ConverterCard {
 	private boolean upgraded;
 	private ArrayList<ConverterFeatures> entryResources; // costs and benefits to putting the card in play
 	private ArrayList<Converterfeatures> upgradeResources; // costs and benefits to upgrading the card
-
+	
+	// Do not use as instance, only used for class comparisons
+	public ConverterSet() {}
 
 	public ConverterSet(String unupgradedConvName, String upgradedConvName, ArrayList<Converter> unupgradedConverters, ArrayList<Converter> upgradedConverters, ArrayList<Converter> entries, ArrayList<Converter> upgrades, boolean tradeRun) {
 		firstConverters = arrayConverterToFeatures(unupgradedConverters, unupgradedConvName, tradeRun);
