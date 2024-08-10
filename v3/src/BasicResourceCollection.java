@@ -11,6 +11,7 @@ public class BasicResourceCollection extends ResourceCollection {
 
 	// Copy constructor of otherCollection
 	public BasicResourceCollection(ResourceCollection otherCollection) {
+		collection = new HashMap<Resource, Integer>();
 		Iterator<Resource> rscItr = otherCollection.resourceIterator();
 		while (rscItr.hasNext()) {
 			Resource r = rscItr.next();
