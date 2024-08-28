@@ -1,5 +1,5 @@
 				
-Species	Starting Resources	Bid Tiebreaker	Colony Support	
+[HEADER]Species	Starting Resources	Bid Tiebreaker	Colony Support	
 Caylion Plutocracy	1 colony, 2 black, 5 green, 4 white, 2 brown, 1 ship	1	3	
 Eni Et Ascendancy	1 colony, 1 blue, 2 brown, 2 white, 1 green, 1 ship	3	3	
 Faderan Conclave	1 colony, 1 research team, 1 octagon, 1 blue, 1 yellow, 2 ship, 1 brown, 3 white	7	4	
@@ -13,7 +13,7 @@ Zeth Anocracy	1 colony, 1 research team, 2 blue, 1 yellow, 2 black, 1 ship, 1 gr
 				
 				
 				
-Players	Colony Bid Track	Research Bid Track	Sharing Bonus	Yengii Sharing Bonus
+[HEADER]Players	Colony Bid Track	Research Bid Track	Sharing Bonus	Yengii Sharing Bonus
 3	1, 2, 3	1, 2, 3	6, 5, 4, 4, 3, 2	3, 2, 2, 1, 1, 0
 4	1, 1, 2, 3	1, 1, 2, 3	6, 5, 4, 4, 3, 2	3, 2, 2, 1, 1, 0
 5	1, 1, 2, 3, 3	1, 1, 2, 3, 3	6, 6, 5, 4, 3, 1	3, 2, 1, 1, 1, 0
