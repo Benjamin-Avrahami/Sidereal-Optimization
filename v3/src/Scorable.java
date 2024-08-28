@@ -39,8 +39,8 @@ public class Scorable implements Resource {
 	}
 
 	// See whether the other resource provided is the same resource as this
-	public boolean equals(Resource otherResource) {
-		return otherResource instanceof Scorable && this.getName().equals(otherResource.getName());
+	public boolean equals(Object otherResource) {
+		return otherResource instanceof Scorable && this.getName().equals(((Scorable)otherResource).getName());
 	}
 
 	// Allowing for hashing

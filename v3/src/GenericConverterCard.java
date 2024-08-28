@@ -72,8 +72,8 @@ public class GenericConverterCard extends ConverterCard {
 	}
 
 	// See whether the other resource provided is the same resource as this
-	public boolean equals(Resource otherResource) {
-		return otherResource instanceof GenericConverterCard && this.getName().equals(otherResource.getName());
+	public boolean equals(Object otherResource) {
+		return otherResource instanceof GenericConverterCard && this.getName().equals(((GenericConverterCard)otherResource).getName());
 	}
 
 	// Allowing for hashing
