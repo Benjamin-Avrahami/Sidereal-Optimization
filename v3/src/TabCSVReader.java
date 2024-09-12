@@ -46,6 +46,7 @@ public class TabCSVReader {
 
 
   // Returns the value on the current line under the header of columnHeader
+  // If called before nextLine, will return columnHeader if it is a header
   // Each value (both in the file's headers and the current line) are separated by the delimiter, usually tab
   // If the columnHeader is not in the file's headers, returns empty string
   public String getLineValue(String columnHeader) {
