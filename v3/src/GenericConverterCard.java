@@ -90,21 +90,12 @@ public class GenericConverterCard extends ConverterCard {
 		return inPlay;
 	}
 
-	// Given a (wrapped) converter and resources, run the converter
-	private boolean runConverter(ConverterFeatures convf, ResourceCollection startingResources, ResourceCollection futureResources) {
-		if (convf.instantRun) {
-			return convf.conv.instantExecution(startingResources, futureResources);
-		}
-		else {
-			return convf.conv.delayedExecution(startingResources, futureResources);
-		}
-	}
-
 	private boolean runConverterFeatureFromArray(ArrayList<ConverterFeatures> convarry, int index, ResourceCollection startingResources, ResourceCollection futureResources) {
 		if (index >= convarry.size()) return false;
-		return runConverter(convarry.get(index), startingResources, futureResources);
+		return convarry.get(index).runConverter(startingResources, futureResources);
 	}
 
+	// Runs the first legally available (not taking into account resources) converter on the card
 	public boolean run(ResourceCollection initialResources, ResourceCollection futureResources) {
 		return run(0, initialResources, futureResources);
 	}
@@ -136,6 +127,43 @@ public class GenericConverterCard extends ConverterCard {
 		if (!isInPlay()) return false;
 		if (isUpgraded()) return false;
 		return runConverterFeatureFromArray(upgradeResources, index, initialResources, futureResources);
+	}
+	
+	
+	public void display() {
+		System.out.println("Entry costs:");
+		for (int i = 0; i < entryResources.size(); ++i) {
+			System.out.println(i+1);
+			entryResources.get(i).display();
+		}
+		if (inPlay) {
+			System.out.print("This card is in play. ");
+			if (!upgraded) {
+				System.out.println("On Side 1.");
+			}
+			else {
+				System.out.println("On Side 2.");
+			}
+		}
+		else {
+			System.out.println("This card is not in play.");
+		}
+		System.out.println("Side 1 - " + unupgradedConverterName);
+		for (int i = 0; i < cardConverters.get(0).size(); ++i) {
+			System.out.println(i+1);
+			cardConverters.get(0).get(i).display();
+		}
+		System.out.println("Upgrade costs:");
+		for (int i = 0; i < upgradeResources.size(); ++i) {
+			System.out.println(i+1);
+			upgradeResources.get(i).display();
+		}
+		System.out.println("Side 2 - " + upgradedConverterName);
+		for (int i = 0; i < cardConverters.get(1).size(); ++i) {
+			System.out.println(i+1);
+			cardConverters.get(1).get(i).display();
+		}
+		System.out.println("--------- End Card ----------");
 	}
 
 }

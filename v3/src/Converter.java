@@ -55,4 +55,14 @@ public class Converter {
 		resourceInput.addAll(inputCopy);
 		resourceOutput.addAll(outputCopy);
 	}
+	
+	
+	// Prints information on converter (input/output resources)
+	public void display() {
+		System.out.println("Converter Information:");
+		System.out.println("Input:");
+		resourceInput.display();
+		System.out.println("Output:");
+		resourceOutput.display();
+	}
 }
