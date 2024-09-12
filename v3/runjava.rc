@@ -1,6 +1,8 @@
 #!/bin/bash
-scriptpath=$(dirname "$0")
+scriptpath=$(dirname "${BASH_SOURCE[0]}")
 
-rm -f $scriptpath/src/*.class
-javac $scriptpath/src/*.java
-java -cp "$scriptpath/src" $1
+cd $scriptpath
+
+rm -f src/*.class
+javac src/*.java
+java -cp "src" $1

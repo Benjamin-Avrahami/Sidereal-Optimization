@@ -1,6 +1,8 @@
 #!/bin/bash
-scriptpath=$(dirname "$0")
+scriptpath=$(dirname "${BASH_SOURCE[0]}")
 
-rm -f $scriptpath/test/*.class
-javac $scriptpath/test/*.java $scriptpath/src/*.java -cp "$scriptpath/lib/junit-platform-console-standalone-1.7.0-all.jar"
-java -jar $scriptpath/lib/junit-platform-console-standalone-1.7.0-all.jar -cp "$scriptpath/test/;$scriptpath/src/" --select-class $1
+cd $scriptpath
+
+rm -f test/*.class
+javac test/*.java src/*.java -cp "lib/junit-platform-console-standalone-1.7.0-all.jar"
+java -jar lib/junit-platform-console-standalone-1.7.0-all.jar -cp "test/;src/" --select-class $1
