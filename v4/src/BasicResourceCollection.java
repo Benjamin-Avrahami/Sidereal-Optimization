@@ -10,19 +10,20 @@ public class BasicResourceCollection extends ResourceCollection {
 		collection = new HashMap<GameObject, Integer>();
 	}
 
-	// Copy constructor of otherCollection
-	public BasicResourceCollection(ResourceCollection otherCollection) {
-		collection = new HashMap<GameObject, Integer>();
-		Iterator<GameObject> rscItr = otherCollection.resourceIterator();
-		while (rscItr.hasNext()) {
-			GameObject r = rscItr.next();
-			add(r,otherCollection.getAmount(r));
-		}
-	}
-
 	// Copies the map representation into the internal representation
 	public BasicResourceCollection(Map<GameObject, Integer> mapRepresentation) {
 		this.collection = new HashMap<GameObject, Integer>(mapRepresentation);
+	}
+
+
+	// Returns a copy of this collection
+	public ResourceCollection getCopy() {
+		collection_copy = new BasicResourceCollection();
+		Iterator<GameObject> rscItr = resourceIterator();
+		while (rscItr.hasNext()) {
+			GameObject r = rscItr.next();
+			collection_copy.add(r,getAmount(r));
+		}
 	}
 
 	// Returns whether there are any resources in the collection
@@ -73,5 +74,10 @@ public class BasicResourceCollection extends ResourceCollection {
     collection.put(res, collection.get(res) - n);
     cleanup(res);
 		return true;
+	}
+
+	// Counts the total number of distinct objects in the collection (O(1) performance)
+	public int distinctObjects() {
+		return collection.size();
 	}
 }

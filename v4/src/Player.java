@@ -1,30 +1,18 @@
 
 public class Player {
-	private SeparatedResourceCollection resources;
-	private String player_name;
+	private String player_race;
 	private int colony_support;
 	private int bid_tiebreak;
-	
-	public Player(String name, int col_support, int tiebreak) {
-		player_name = name;
-		colony_support = col_support;
-		bid_tiebreak = tiebreak;
-		resources = new SeparatedResourceCollection(new SameClassSubclassRule());
+
+	private ResourceCollection player_cubes; // Scoring tokens (cubes, octagons, VP)
+	private ResourceCollection player_tokens; //Non-scoring tokens (seedlings, etc.)
+	private ResourceCollection player_converters;
+	private ResourceCollection player_colonies;
+	private ResourceCollection player_research_teams;
+
+	public Player() {
+
 	}
-	
-	// Can add cubes, fleets, cards, colonies, etc
-	public void add(Resource r) {
-		resources.add(r);
-	}
-	
-	public ResourceCollection getCubes() {
-		Scorable test = null;
-		return resources.getCollectionOfType(test);
-	}
-	
-	public ResourceCollection getConverters() {
-		GenericConverterCard test = null;
-		return resources.getCollectionOfType(test);
-	}
-	
+
+
 }

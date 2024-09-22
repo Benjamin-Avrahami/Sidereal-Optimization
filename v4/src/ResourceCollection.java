@@ -16,6 +16,9 @@ public abstract class ResourceCollection {
 		return true;
 	}
 
+	// Returns a copy of the collection
+	public ResourceCollection getCopy();
+
 	// Returns an iterator over the (distinct) resources in the collection
 	public abstract Iterator<GameObject> resourceIterator();
 
@@ -90,6 +93,29 @@ public abstract class ResourceCollection {
 			this.remove(r, other.getAmount(r)); // Ends up checking twice for ability to remove, but does not change functionality
 		}
 		return true;
+	}
+
+	// Counts the total number of objects in the collection
+	public int totalObjects() {
+		int count = 0;
+		Iterator<GameObject> itr = resourceIterator();
+		while (itr.hasNext()) {
+			GameObject r = itr.next();
+			count += getAmount(r);
+		}
+		return count;
+	}
+
+	// Counts the total number of distinct objects in the collection
+	// O(n) default behavior, likely to be overridden in concrete classes if they can get better performance
+	public int distinctObjects() {
+		int count = 0;
+		Iterator<GameObject> itr = resourceIterator();
+		while (itr.hasNext()) {
+			GameObject r = itr.next();
+			count += 1;
+		}
+		return count;
 	}
 
 	// Prints the collection
