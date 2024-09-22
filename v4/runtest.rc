@@ -1,0 +1,8 @@
+#!/bin/bash
+scriptpath=$(dirname "${BASH_SOURCE[0]}")
+
+cd $scriptpath
+
+rm -f test/*.class
+javac test/*.java src/*.java -cp "lib/junit-platform-console-standalone-1.7.0-all.jar"
+java -jar lib/junit-platform-console-standalone-1.7.0-all.jar -cp "test/;src/" --select-class $1
