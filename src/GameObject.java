@@ -11,5 +11,8 @@ public interface GameObject {
 
 	// Allowing for hashing
 	public int hashCode();
+	
+	// Gets the type of the object within the game (cube, converter, colony, etc.)
+	public String objectType();
 
 }

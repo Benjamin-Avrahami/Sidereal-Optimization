@@ -2,8 +2,38 @@
 import java.util.*;
 import java.io.*;
 
-
-public abstract class ResourceCollection {
+// Like normal hashmaps, the hashcode of any object within the resource collection should not change while in it
+public class ResourceCollection {
+	private Map<GameObject, Integer> collection;
+	
+	public ResourceCollection() {
+		collection = new HashMap<GameObject, Integer>();
+	}
+	
+	// Copies the map representation into the internal representation
+	public ResourceCollection(Map<GameObject, Integer> mapRepresentation) {
+		collection = new HashMap<GameObject, Integer>(mapRepresentation);
+	}
+	
+	// Returns a copy of this collection
+	public ResourceCollection getCopy() {
+		collection_copy = new BasicResourceCollection();
+		Iterator<GameObject> rscItr = resourceIterator();
+		while (rscItr.hasNext()) {
+			GameObject r = rscItr.next();
+			collection_copy.add(r,getAmount(r));
+		}
+	}
+	
+	// Returns whether there are any resources in the collection
+	public boolean isEmpty() {
+		return collection.size() == 0;
+	}
+	
+	// Returns an iterator over the (distinct) resources in the collection
+	public Iterator<GameObject> resourceIterator() {
+		return collection.keySet().iterator();
+	}
 
 	public boolean equals(ResourceCollection otherCollection) {
 		Iterator<GameObject> itr = resourceIterator();
@@ -16,14 +46,7 @@ public abstract class ResourceCollection {
 		return true;
 	}
 
-	// Returns a copy of the collection
-	public ResourceCollection getCopy();
 
-	// Returns an iterator over the (distinct) resources in the collection
-	public abstract Iterator<GameObject> resourceIterator();
-
-	// Returns whether there are any resources in the collection
-	public abstract boolean isEmpty();
 
 	// Adds the resource into the resource collection
 	public void add(GameObject res) {
@@ -31,7 +54,9 @@ public abstract class ResourceCollection {
 	}
 
 	// Adds n >= 0 copies of the resource into the resource collection
-	public abstract void add(GameObject res, int n);
+	public void add(GameObject res, int n) {
+		collection.put(res, collection.getOrDefault(res, 0) + n);
+	}
 
 	// Adds every resource in the other resource collection to this one
 	public void addAll(ResourceCollection other) {
@@ -48,9 +73,11 @@ public abstract class ResourceCollection {
 		return hasResource(res, 1);
 	}
 
-	// Returns true if the collection has at least n copies of the resource, false otherwise
-	public abstract boolean hasResource(GameObject res, int n);
 
+	// Returns true if the collection has at least n copies of the resource, false otherwise
+	public boolean hasResource(GameObject res, int n) {
+		return collection.containsKey(res) && collection.get(res) >= n;
+	}
 
     // Returns true if this collection has at least as many resources of each type as the other collection
     // Returns false if there is any resource that this collection has fewer of than the other collection
@@ -65,9 +92,23 @@ public abstract class ResourceCollection {
 		return true;
 	}
 
+
 	// Returns the amount of the resource contained in the collection
 	// Returns 0 if not present
-	public abstract int getAmount(GameObject res);
+	public int getAmount(GameObject res) {
+		if (!hasResource(res)) {
+			return 0;
+		}
+		return collection.get(res);
+	}
+	
+	
+	
+	// Removes from internal representation if no copies are in collection
+	// Must already be in internal representation
+	private void cleanup(GameObject res) {
+		collection.remove(res, 0);
+	}
 
 
 	// Removes the resource from the resource collection
@@ -77,8 +118,15 @@ public abstract class ResourceCollection {
 	}
 
 	// Removes n >= 0 copies of the resource from the resource collection
-    // Returns true if successful, false if not (not enough of the resource in the collection)
-    public abstract boolean remove(GameObject res, int n);
+	// Returns true if successful, false if not (not enough of the resource in the collection)
+	public boolean remove(Resource res, int n) {
+		if (!hasResource(res, n)) {
+			return false;
+		}
+		collection.put(res, collection.get(res) - n);
+		cleanup(res);
+		return true;
+	}
 
 
 	// Tries to remove every resource from the other resource collection from this one
@@ -107,15 +155,22 @@ public abstract class ResourceCollection {
 	}
 
 	// Counts the total number of distinct objects in the collection
-	// O(n) default behavior, likely to be overridden in concrete classes if they can get better performance
 	public int distinctObjects() {
-		int count = 0;
+		return collection.size();
+	}
+	
+	
+	// Returns a new resource collection containing all objects in this collection that have the same type as objType
+	public ResourceCollection getObjectsOfType(String objType) {
 		Iterator<GameObject> itr = resourceIterator();
+		ResourceCollection typedCollection = new ResourceCollection();
 		while (itr.hasNext()) {
 			GameObject r = itr.next();
-			count += 1;
+			if (objType.equals(r.objectType()) {
+				typedCollection.add(r,getAmount(r));
+			}
 		}
-		return count;
+		return typedCollection;
 	}
 
 	// Prints the collection

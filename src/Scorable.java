@@ -72,5 +72,11 @@ public class Scorable implements Resource {
 	public boolean isWild() {
 		return getName().equals(wildType());
 	}
+	
+	// Cubes are defined as objects that have intrinsic value
+	public String objectType() {
+		if (tradeValue() > 0) return "Cube";
+		return "Other";
+	}
 
 }
