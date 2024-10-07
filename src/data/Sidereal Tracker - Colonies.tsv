@@ -1,0 +1,54 @@
+Name	Owner	Climate	Cost of Entering Play	Input	Output	Upgrade Cost	Upgraded Climate	Upgraded Input	Upgraded Output
+Kz'tlr	Kt'zr'kt'rtl	Jungle	1 yellow	1 white	1 black	None	None	None	None
+Kr'xn'xx	Kt'zr'kt'rtl	Ice	1 yellow	1 brown	1 blue	None	None	None	None
+Tk't!'zk	Kt'zr'kt'rtl	Desert	2 yellow	None	1 brown	None	None	None	None
+Kln'qn	Kt'zr'kt'rtl	Ice	2 yellow	None	1 white	None	None	None	None
+Nx'dr	Kt'zr'kt'rtl	Desert	1 yellow	1 green	1 blue	None	None	None	None
+Nz'tt	Kt'zr'kt'rtl	Ocean	1 yellow	1 blue	1 white, 1 brown	None	None	None	None
+Kt'dq'rn'nr	Kt'zr'kt'rtl	Ocean	1 yellow	1 brown	1 black	None	None	None	None
+Zd'nx	Kt'zr'kt'rtl	Jungle	1 yellow	1 black	1 white, 1 green	None	None	None	None
+Gz'zd	Kt'zr'kt'rtl	Jungle	2 yellow	None	1 white	None	None	None	None
+!in'zr'kz	Kt'zr'kt'rtl	Desert	2 yellow	1 white, 1 brown	1 yellow, 1 black	None	None	None	None
+Nx'xt'!in	Kt'zr'kt'rtl	Ice	2 yellow	None	1 brown	None	None	None	None
+Tn'rg'tx'tc	Kt'zr'kt'rtl	Desert	1 yellow	1 black	1 white, 1 green	None	None	None	None
+Nz'cht'qt'rz	Kt'zr'kt'rtl	Ocean	2 yellow	1 yellow	1 octagon	None	None	None	None
+Alnitak	None	Ocean	None	None	1 green	1 octagon	Ice	1 green	1 octagon
+Pollux	None	Desert	None	None	1 white	1 blue	Ocean	None	1 blue
+Polaris	None	Ocean	None	None	1 brown	1 yellow	Desert	None	1 desert
+Alioth	None	Ice	None	None	1 white	2 brown	Desert	None	1 white, 1 brown
+Rigel	None	Jungle	None	None	1 green	1 blue	Ocean	None	1 blue
+Spica	None	Ice	None	None	1 white	2 green	Ocean	None	1 white, 1 green
+Sirius	None	Jungle	None	None	1 green	1 black	Ice	None	1 black
+Mirfak	None	Jungle	None	None	1 green	1 black	Ice	None	1 black
+El Nath	None	Jungle	None	None	1 green	1 blue	Ocean	None	1 blue
+Betelgeuse	None	Ice	None	None	1 white	1 octagon	Jungle	1 white	1 octagon
+Fomalhaut	None	Ice	None	None	1 brown	1 octagon	Desert	1 brown	1 octagon
+Procyon	None	Desert	None	None	1 brown	1 yellow	Ocean	None	1 yellow
+Regulus	None	Jungle	None	None	1 white	1 yellow	Desert	None	1 yellow
+Acrux	None	Desert	None	None	1 brown	2 white	Ice	None	1 white, 1 brown
+Adara	None	Jungle	None	None	1 green	2 white	Ice	None	1 white, 1 green
+Alnair	None	Ice	None	None	1 brown	1 black	Ocean	None	1 black
+Capella	None	Ocean	None	None	1 green	1 blue	Jungle	None	1 blue
+Sargas	None	Desert	None	None	1 brown	1 yellow	Jungle	None	1 yellow
+Bellatrix	None	Ocean	None	None	1 white	1 yellow	Desert	None	1 yellow
+Koo She	None	Desert	None	None	1 brown	1 blue	Ocean	None	1 blue
+Hadar	None	Ocean	None	None	1 green	1 yellow	Jungle	None	1 yellow
+Gacrux	None	Ice	None	None	1 white	1 yellow	Desert	None	1 yellow
+Toliman	None	Desert	None	None	1 white	1 black	Ice	None	1 black
+Wezen	None	Jungle	None	None	1 brown	1 black	Ocean	None	1 black
+Altair	None	Ocean	None	None	1 green	1 yellow	Desert	None	1 yellow
+Aldebaran	None	Jungle	None	None	1 brown	1 yellow	Desert	None	1 yellow
+Shaula	None	Desert	None	None	1 brown	2 green	Jungle	None	1 green, 1 brown
+Antares	None	Jungle	None	None	1 green	1 octagon	Ice	1 green	1 octagon
+Atria	None	Jungle	None	None	1 green	1 yellow	Desert	None	1 yellow
+Arcturus	None	Ice	None	None	1 brown	1 blue	Ocean	None	1 blue
+Castor	None	Ocean	None	None	1 white	1 black	Ice	None	1 black
+Miaplacidus	None	Ocean	None	None	1 green	1 black	Desert	None	1 black
+Benetnasch	None	Ocean	None	None	1 green	1 blue	Jungle	None	1 blue
+Mimosa	None	Ice	None	None	1 white	1 blue	Jungle	None	1 blue
+Peacock	None	Desert	None	None	1 brown	1 black	Jungle	None	1 black
+Achernar	None	Ice	None	None	1 white	1 blue	Jungle	None	1 blue
+Deneb	None	Ice	None	None	1 white	1 black	Ocean	None	1 black
+Vega	None	Desert	None	None	1 brown	1 blue	Jungle	None	1 blue
+Canopus	None	Desert	None	None	1 brown	1 octagon	Ice	1 brown	1 octagon
+Suhail	None	Ocean	None	None	1 white	1 black	Ice	None	1 black
