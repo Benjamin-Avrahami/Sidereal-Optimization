@@ -1,5 +1,5 @@
 
-
+import java.util.*;
 
 public class ConverterSide {
 	private String name;
@@ -12,7 +12,7 @@ public class ConverterSide {
 		name = sideName;
 		converters = new ArrayList<ConverterFeatures>();
 		for (int i = 0; i < sideConverters.size(); i++) {
-			converters.add(new ConverterFeatures(converters.get(i), sideName + "_" + (i+1), tradeRun));
+			converters.add(new ConverterFeatures(sideConverters.get(i), sideName + "_" + (i+1), tradeRun));
 		}
 	}
 	

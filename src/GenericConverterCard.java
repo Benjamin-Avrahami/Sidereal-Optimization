@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 
 public class GenericConverterCard extends ConverterCard {
 	
@@ -19,8 +20,8 @@ public class GenericConverterCard extends ConverterCard {
 		frontSide = side1;
 		backSide = side2;
 		entrySide = new ConverterSide(side1.getName() + "_entry", entries, true); // Assumes entry during trade
-		upgradeSide = arrayConverterToFeatures(side1.getName() + "_upgrade", upgrades, true); // Assumes upgrade during trade
-		inPlay = entrySide.numConverterOptions.size() == 0;
+		upgradeSide = new ConverterSide(side1.getName() + "_upgrade", upgrades, true); // Assumes upgrade during trade
+		inPlay = entrySide.numConverterOptions() == 0;
 		upgraded = false;
 	}
 	
@@ -28,7 +29,7 @@ public class GenericConverterCard extends ConverterCard {
 	// Returns current side that the card is on
 	// Will still return front side if card is not in play
 	private ConverterSide currentSide() {
-		if (!isUpgraded) return frontSide;
+		if (!isUpgraded()) return frontSide;
 		else return backSide;
 	}
 
@@ -36,6 +37,10 @@ public class GenericConverterCard extends ConverterCard {
 	// Get the name of the resource
 	public String getName() {
 		return currentSide().getName();
+	}
+	
+	public String objectType() {
+		return "Converter";
 	}
 
 	// See whether the other resource provided is the same resource as this
@@ -45,8 +50,9 @@ public class GenericConverterCard extends ConverterCard {
 	}
 
 	// Allowing for hashing
+	// Only checks initial name so that hash code does not change while in a resource collection
 	public int hashCode() {
-		return getName().hashCode();
+		return frontSide.getName().hashCode();
 	}
 
 

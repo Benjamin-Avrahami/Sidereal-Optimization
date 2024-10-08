@@ -1,7 +1,7 @@
 
 // Anything a player physically interacts with
 // Specifically, anything that can be an input/output to a converter, boradly defined (cubes/colonies/converters/research teams/...)
-public interface GameObject {
+public interface Consumable {
 
 	// Get the name of the resource
 	public String getName();

@@ -1,6 +1,6 @@
 
 
-public abstract class ConverterCard implements Resource {
+public abstract class ConverterCard implements Consumable {
   // Runs the converter on the card (defaults to first legally available)
   // initialResources are the resources available this turn, futureResources are the resources available next turn (created during economy)
   // Consumes any necessary resources if successfully run, then inserts created resources to the appropriate resource collection

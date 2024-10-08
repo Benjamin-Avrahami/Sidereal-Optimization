@@ -1,19 +1,19 @@
 public class Main {
   public static void main(String[] args) {
-    ResourceCollection input = new BasicResourceCollection();
-    Scorable yel = new Scorable("yellow");
-    Scorable bro = new Scorable("brown");
+    ResourceCollection input = new ResourceCollection();
+    Resource yel = new Resource("yellow");
+    Resource bro = new Resource("brown");
     input.add(yel);
     input.add(yel, 2);
     input.add(bro, 5);
 
-    ResourceCollection output = new BasicResourceCollection();
-    Scorable vp = new Scorable("victory point");
+    ResourceCollection output = new ResourceCollection();
+    Resource vp = new Resource("victory point");
     output.add(vp);
 
     Converter conv = new Converter(input, output);
 
-    ResourceCollection resources = new BasicResourceCollection(input);
+    ResourceCollection resources = input.getCopy();
     resources.add(yel);
     resources.display();
     conv.instantExecution(resources);

@@ -1,12 +1,12 @@
 
-public class Scorable implements Resource {
+public class Resource implements Consumable {
 	private final String name;
 	private final double tradeVal;
 	private final String scorableType; // Narrow(er) category it belongs to
 	private final String coveredWild; // Wild cube that could substitute for this
 
 	// Setting constants for each scorable type
-	public Scorable(String resourceName) {
+	public Resource(String resourceName) {
 		name = resourceName;
 		if (getName().equals("brown") || getName().equals("white") || getName().equals("green") || getName().equals("small grey")) {
 			tradeVal = 1.0/3.0;
@@ -40,7 +40,7 @@ public class Scorable implements Resource {
 
 	// See whether the other resource provided is the same resource as this
 	public boolean equals(Object otherResource) {
-		return otherResource instanceof Scorable && this.getName().equals(((Scorable)otherResource).getName());
+		return otherResource instanceof Resource && this.getName().equals(((Resource)otherResource).getName());
 	}
 
 	// Allowing for hashing
