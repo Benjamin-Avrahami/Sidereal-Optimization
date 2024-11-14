@@ -25,11 +25,11 @@ public class TabCSVReader {
       currentLine = "";
     }
     catch (FileNotFoundException fe) {
-			System.out.println("File not found");
+	  System.out.println("File not found");
       fileReader = null;
       headers = null;
       currentLine = "";
-		}
+    }
   }
 
   public boolean hasNextLine() {
@@ -38,10 +38,18 @@ public class TabCSVReader {
 
   // Returns next non-empty line, and moves onto the line for state-based operations
   // Will not return headers (used in constructor)
+  // Returns empty string if there are no more lines
   public String nextLine() {
+	if (!hasNextLine()) return "";
     currentLine = fileReader.nextLine();
     if (currentLine.trim().length() == 0) return nextLine(); // move on if blank line
     return currentLine;
+  }
+  
+  
+  // Returns the list of headers of the file being read
+  public ArrayList<String> getFileHeaders() {
+	  return headers;
   }
 
 

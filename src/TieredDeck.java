@@ -10,15 +10,10 @@ public class TieredDeck extends Deck {
   // 0-th sublist will be taken out first, then 1-th, then so on
   // l_objects can be a list of resource collections or of lists of consumables
   // Ends up being a mess because this cannot be overloaded due to type erasure, and causes unsafe operations
-  public TieredDeck(ArrayList<?> l_objects) {
+  public TieredDeck(ArrayList<ResourceCollection> l_objects) {
     tier_cards = new ArrayList<RandomDeck>();
     for (int i = 0; i < l_objects.size(); i++) {
-      if (l_objects.get(i) instanceof ResourceCollection) {
-		  tier_cards.add(new RandomDeck((ResourceCollection)l_objects.get(i)));
-	  }
-	  if (l_objects.get(i) instanceof List) {
-		  tier_cards.add(new RandomDeck((List<Consumable>)l_objects.get(i)));
-	  }
+        tier_cards.add(new RandomDeck(l_objects.get(i)));
     }
     index = 0;
   }
