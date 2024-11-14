@@ -1,32 +1,40 @@
-public class ConverterFeatures {
-	private Converter conv;
-	private String name;
-	private boolean instantRun; // true if run in trade, false in economy
+// A converter, but with the additional game feature of when the converter is allowed to run
+public class ConverterFeatures extends Converter {
 	
-	ConverterFeatures(Converter con, String conName, boolean instRun) {
-		conv = con.getCopy();
-		name = conName;
-		instantRun = instRun;
+	private String phase; // trade or economy
+	
+	public void setPhaseRun(String phaseRun) {
+		phase = phaseRun;
 	}
 	
-	// Runs the converter according to its time
-	public boolean runConverter(ResourceCollection startingResources, ResourceCollection futureResources) {
-		if (instantRun) {
-			return conv.instantExecution(startingResources, futureResources);
+	public String getPhaseRun() {
+		return phase;
+	}
+	
+	public boolean isEligibleToRun(String currentPhase) {
+		return phase.equals(currentPhase);
+	}
+	
+	public boolean instantExecution(ResourceCollection startingResources, ResourceCollection futureResources, String currentPhase) {
+		if (isEligibleToRun(currentPhase)) {
+			return instantExecution(startingResources, futureResources);
 		}
 		else {
-			return conv.delayedExecution(startingResources, futureResources);
+			return false;
+		}
+	}
+	
+	public boolean delayedExecution(ResourceCollection startingResources, ResourceCollection futureResources, String currentPhase) {
+		if (isEligibleToRun(currentPhase)) {
+			return delayedExecution(startingResources, futureResources);
+		}
+		else {
+			return false;
 		}
 	}
 	
 	public void display() {
-		System.out.print("Converter " + name);
-		if (instantRun) {
-			System.out.println("(run in trade)");
-		}
-		else {
-			System.out.println("(run in economy)");
-		}
-		conv.display();
+		super.display();
+		System.out.println("Runs during " + phase);
 	}
 }
