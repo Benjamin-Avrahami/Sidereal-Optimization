@@ -2,25 +2,18 @@
 public class Resource implements Consumable {
 	private final String name;
 	private final double tradeVal;
-	private final String scorableType; // Narrow(er) category it belongs to
-	private final String coveredWild; // Wild cube that could substitute for this
+	private boolean donation;
 
 	// Setting constants for each scorable type
 	public Resource(String resourceName) {
 		name = resourceName;
 		if (getName().equals("brown") || getName().equals("white") || getName().equals("green") || getName().equals("small grey")) {
 			tradeVal = 1.0/3.0;
-			scorableType = "small";
-			coveredWild = "small grey";
 		}
 		else if (getName().equals("yellow") || getName().equals("black") || getName().equals("blue") || getName().equals("large grey")) {
 			tradeVal = 1.0/2.0;
-			scorableType = "large";
-			coveredWild = "large grey";
 		}
 		else {
-			scorableType = "scorable";
-			coveredWild = ""; // no wilds
 			if (getName().equals("ship")) {
 				tradeVal = 1.0/3.0;
 			}
@@ -63,15 +56,16 @@ public class Resource implements Consumable {
 			return tradeValue()/2;
 		}
 	}
-
-	// The wild type for the class of scorable
-	public String wildType() {
-		return coveredWild;
+	
+	// Change whether the resource is a donation good or not
+	public void setDonationValue(boolean donated) {
+		donation = donated;
 	}
-
-	public boolean isWild() {
-		return getName().equals(wildType());
+	
+	public boolean isDonation() {
+		return donation;
 	}
+		
 	
 	// Cubes are defined as objects that have intrinsic value
 	public String objectType() {

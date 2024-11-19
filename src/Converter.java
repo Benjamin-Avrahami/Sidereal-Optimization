@@ -16,6 +16,14 @@ public class Converter {
 		Converter conv = new Converter(this.resourceInput, this.resourceOutput);
 		return conv;
 	}
+	
+	public ResourceCollection getInputs() {
+		return inputResources.getCopy();
+	}
+	
+	public ResourceCollection getOutputs() {
+		return outputResources.getCopy();
+	}
 
 	// Tries to run the converter (using the resources for inputs), then add the outputs back to the given resource set
 	// Returns True if successfully executed, False if not (not enough starting resources)
