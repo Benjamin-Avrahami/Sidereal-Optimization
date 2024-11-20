@@ -31,26 +31,22 @@ public class ConverterFeatures extends Converter {
 		return phase;
 	}
 	
-	// Converter can only run if it the correct game phase to run it in and it hasn't been run yet this turn
-	public boolean isEligibleToRun(String currentPhase) {
-		return phase.equals(currentPhase) && !(hasBeenRun);
+	// Can only be run if it has not yet been run this turn
+	public boolean isEligibleToRun() {
+		return !hasBeenRun;
 	}
 	
-	// Copy of parent function, but checks whether eligible to run (and then marks as run) first
-	public boolean instantExecution(ResourceCollection startingResources, ResourceCollection futureResources, String currentPhase) {
-		if (isEligibleToRun(currentPhase)) {
-			hasNotBeenRun = true;
-			return instantExecution(startingResources, futureResources);
-		}
-		else {
+	// Given the phase, runs the correct version of the converter
+	public boolean execute(ResourceCollection startingResources, ResourceCollection futureResources) {
+		if (!isEligibleToRun) {
 			return false;
 		}
-	}
-	
-	// Copy of parent function, but checks whether eligible to run (and then marks as run) first
-	public boolean delayedExecution(ResourceCollection startingResources, ResourceCollection futureResources, String currentPhase) {
-		if (isEligibleToRun(currentPhase)) {
-			hasBeenRun = true;
+		
+		hasBeenRun = true;
+		if (getPhaseRun().equals("Trade Phase")) {
+			return instantExecution(startingResources, futureResources);
+		}
+		else if (getPhaseRun().equals("Economy Phase")) {
 			return delayedExecution(startingResources, futureResources);
 		}
 		else {
@@ -58,8 +54,9 @@ public class ConverterFeatures extends Converter {
 		}
 	}
 	
+	
 	public void display() {
 		super.display();
-		System.out.println("Runs during " + phase);
+		System.out.println("Runs during " + getPhaseRun());
 	}
 }
