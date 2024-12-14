@@ -41,6 +41,12 @@ public class ResourceCollection {
 		}
 		return true;
 	}
+	
+	
+	// Returns true if the resources in this collection are fully substitible for the resources in otherCollection (and vice versa)
+	public boolean hasEquivalentResources(ResourceCollection otherCollection) {
+		return this.equals(otherCollection);
+	}
 
 
 

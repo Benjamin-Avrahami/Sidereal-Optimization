@@ -50,9 +50,9 @@ public class GenericConverterCard implements Consumable {
 	public String getName() {
 		if (currentSide == 0) {
 			return names.get(0);
-			else {
-				return names.get(currentSide-1);
-			}
+		}
+		else {
+			return names.get(currentSide-1);
 		}
 	}
 	
@@ -174,22 +174,25 @@ public class GenericConverterCard implements Consumable {
 	// Attempts to fulfill the request sent to the card by the player to run/upgrade/enter play with one of the converters
 	// If successful, modifies the player's resources and returns true; if failed for any reason, returns false and does not change
 	public boolean useConverter(ConverterUseRequest req) {
+		// Incomplete request
+		if (!req.isCompleteRequest()) {
+			return false;
+		}
 		// Ineligible to run for some reason
 		if (!isEligibleToRun(req)) {
 			return false;
 		}
-		ConverterFeatures conv = getRequestConverter(req);
+		ConverterFeatures convf = getRequestConverter(req);
 		// Bad request
-		if (conv == null) {
+		if (convf == null) {
 			return false;
 		}
 		// Wrong phase
-		if (!(req.getGame().currentPhase().equals(conv.getPhaseRun()))) {
+		if (!(req.getGame().currentPhase().equals(convf.getPhaseRun()))) {
 			return false;
 		}
-		// Check resource choice
 		
-		// conv.execute()
+		return convf.execute(req.getPlayer(), req.getResourceChoice());
 	}
 
 	
@@ -200,6 +203,7 @@ public class GenericConverterCard implements Consumable {
 			System.out.print(": ");
 			converterSide.get(i).display();
 		}
+	}
 	
 	// Prints information about the converter
 	public void display() {

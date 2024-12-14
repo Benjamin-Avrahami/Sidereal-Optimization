@@ -4,22 +4,24 @@ public class ConverterUseRequest {
 	private Player p;
 	private ConverterCard c;
 	private Game g;
-	// enter play/upgrade/run
+	// Enter Play/Upgrade/Convert
 	private String requestType;
 	// If more than one option to do the request on the converter, choose which one to do
 	private int converterChoice;
 	// If the resources needed by the converter are underspecific/generic, choose the specific cubes
-	private ResourceCollection resourceChoice;
+	private ConverterResourceChoice resourceChoice;
 	
-	public ConverterUseRequest(Game gameIn, Player playerRequesting, ConverterCard converterRun, String request) {
-		g = gameIn;
-		p = playerRequesting;
-		c = converterRun;
-		requestType = request;
-		// by default the first option
-		converterChoice = 0;
-		// if not specified, the resources used are the resources specified
+	public ConverterUseRequest(ConverterCard converterUsed, Player playerUsing, Game gameContext) {
+		p = playerUsing;
+		c = converterUsed;
+		g = gameContext;
+		requestType = "";
+		converterChoice = -1;
 		resourceChoice = null;
+	}
+	
+	public void setRequestType(String request) {
+		requestType = request;
 	}
 	
 	public void setConverterChoice(int choice) {
@@ -30,7 +32,7 @@ public class ConverterUseRequest {
 		resourceChoice = choice;
 	}
 	
-	public Player getPlayerRequesting() {
+	public Player getPlayer() {
 		return p;
 	}
 	
@@ -38,9 +40,25 @@ public class ConverterUseRequest {
 		return c;
 	}
 	
+	public Game getGame() {
+		return g;
+	}
+	
 	public String getRequestType() {
 		return requestType;
 	}
 	
-	public Converter converterAccessed;
+	public int getConverterChoice() {
+		return converterChoice;
+	}
+	
+	public ConverterResourceChoice getResourceChoice() {
+		return resourceChoice;
+	}
+	
+	
+	// Returns true if all fields have been filled in, false if not
+	public boolean isCompleteRequest() {
+		return (!(g == null || p == null || c == null || requestType.equals("") || converterChoice == -1 || resourceChoice == null));
+	}
 }

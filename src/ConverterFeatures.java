@@ -1,17 +1,18 @@
 // A converter, but with additional game features determining ability to run
-public class ConverterFeatures extends Converter {
+public class ConverterFeatures {
 	
+	private Converter conv;
 	private String phase; // trade or economy
 	private boolean hasBeenRun; // whether the converter has been run or not this turn
 	
 	public ConverterFeatures() {
-		super();
+		conv = new Converter();
 		phase = "";
 		hasBeenRun = false;
 	}
 
 	public ConverterFeatures(ResourceCollection inputResources, ResourceCollection outputResources) {
-		super(inputResources, outputResources);
+		conv = new Converter(inputResources, outputResources);
 		phase = "";
 		hasBeenRun = false;
 	}
@@ -36,27 +37,34 @@ public class ConverterFeatures extends Converter {
 		return !hasBeenRun;
 	}
 	
+	// Resets the converter (at the start of a new turn)
+	public boolean refresh() {
+		hasBeenRun = false;
+	}
+	
 	// Given the phase, runs the correct version of the converter
-	public boolean execute(ResourceCollection startingResources, ResourceCollection futureResources) {
-		if (!isEligibleToRun) {
+	public boolean execute(Player p, ConverterResourceChoice resourceChoice) {
+		if (!isEligibleToRun()) {
 			return false;
 		}
 		
 		hasBeenRun = true;
 		if (getPhaseRun().equals("Trade Phase")) {
-			return instantExecution(startingResources, futureResources);
+			return conv.execute(p.getCurrentResources(), p.getCurrentResources(), resourceChoice);
 		}
 		else if (getPhaseRun().equals("Economy Phase")) {
-			return delayedExecution(startingResources, futureResources);
+			return conv.execute(p.getCurrentResources(), p.getFutureResources(), resourceChoice);
 		}
 		else {
 			return false;
 		}
 	}
 	
-	
 	public void display() {
 		super.display();
 		System.out.println("Runs during " + getPhaseRun());
+		if (!isEligibleToRun()) {
+			System.out.println("(Already been run this turn)");
+		}
 	}
 }
