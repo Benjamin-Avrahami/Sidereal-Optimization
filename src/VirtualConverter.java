@@ -1,54 +1,23 @@
 
 
-// Temporary structure used by players to make choices 
-public class VirtualConverter {
-	ResourceCollection inputConcreteResources;
-	ResourceCollection inputConverterResources;
-	ResourceCollection outputConverterResources;
-	ResourceCollection outputConcreteResources;
-	
-	public VirtualConverter() {
-		inputConcreteResources = new ResourceCollection();
-		inputConverterResources = new ResourceCollection();
-		outputConverterResources = new ResourceCollection();
-		outputConcreteResources = new ResourceCollection();
-	}
-	
+// Temporary structure used by players to make choices about resources to use in a converter
+// Future note: if a player wants to remove a choice, deleting and reconctructing the virtual converter with the remaining 
+// is likely better since, because implementations typically implement one-by-one comparison, 
+// giving the option of which correspondence to remove can break the invariant (fully substitutable)
+public interface VirtualConverter {
 	// New choice, signifying that when the converter is run, concreteResource -> converterResource in the input
-	// Only works if the replacement (converter) resource is substitutable for the original resource
+	// Will not work if the replacement (converter) resource is not substitutable for the original resource
 	// Returns true if successful, false if not
-	public boolean addNewInputChoice(Resource concreteResource, Resource converterResource) {
-		if (concreteResource.isA(converterResource)) {
-			inputConcreteResources.add(concreteResource);
-			inputConverterResources.add(converterResource);
-			return true;
-		}
-		return false;
-	}
-	
-	// New choice, signifying that when the converter is run, converterResource -> concreteResource in the output
-	// Only works if the replacement (concrete) resource is substitutable for the original resource
-	// Returns true if successful, false if not
-	public boolean addNewOutputChoice(Resource converterResource, Resource concreteResource) {
-		if (concreteResource.isA(converterResource)) {
-			outputConverterResources.add(converterResource);
-			outputConcreteResources.add(concreteResource);
-			return true;
-		}
-		return false;
-	}
+	public boolean addNewInputChoice(Resource concreteResource, Resource converterResource);
 	
 	
 	// Substitutes the player's choices for input resources provided within the ResourceCollection
 	// Returns true if successful, false (and unchanged) if not
-	public boolean executeOnInputs(ResourceCollection beginningResources) {
-		return ConverterUtils.execute(inputConcreteResources, inputConverterResources, beginningResources, beginningResources);
-	}
+	public boolean executeOnInputs(ResourceCollection beginningResources);
+	
 	
 	// Substitutes output resources for the player's choices provided within the ResourceCollection
 	// Returns true if successful, false (and unchanged) if not
-	public boolean executeOnOutputs(ResourceCollection endingResources) {
-		return ConverterUtils.execute(outputConcreteResources, outputConverterResources, endingResources, endingResources);
-	}
+	public boolean executeOnOutputs(ResourceCollection endingResources);
 	
 }
