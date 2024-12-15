@@ -2,12 +2,12 @@
 public class ConverterUseRequestOptions {
 	private String requestType;
 	private int chosenConverter;
-	private ConverterResourceChoice chosenResources;
+	private VirtualConverter chosenResources;
 	
 	public ConverterUseRequestOptions() {
 		requestType = "";
 		chosenConverter = 0;
-		chosenResources = null;
+		chosenResources = new VirtualConverter();
 	}
 	
 	public void setRequestType(String reqType) {
@@ -18,7 +18,7 @@ public class ConverterUseRequestOptions {
 		chosenConverter = converterNum;
 	}
 	
-	public void setResourceChoice(ConverterResourceChoice resources) {
+	public void setResourceChoice(VirtualConverter resources) {
 		chosenResources = resources;
 	}
 	
@@ -30,7 +30,7 @@ public class ConverterUseRequestOptions {
 		return chosenConverter;
 	}
 	
-	public ConverterResourceChoice getResourceChoice() {
+	public VirtualConverter getResourceChoice() {
 		return chosenResources;
 	}
 }

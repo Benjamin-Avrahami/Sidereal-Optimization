@@ -16,7 +16,7 @@ public class Main {
     ResourceCollection resources = input.getCopy();
     resources.add(yel);
     resources.display();
-    conv.instantExecution(resources);
+    conv.execute(resources, resources);
     resources.display();
   }
 }

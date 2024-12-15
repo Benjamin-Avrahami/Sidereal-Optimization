@@ -9,7 +9,7 @@ public class ConverterUseRequest {
 	// If more than one option to do the request on the converter, choose which one to do
 	private int converterChoice;
 	// If the resources needed by the converter are underspecific/generic, choose the specific cubes
-	private ConverterResourceChoice resourceChoice;
+	private VirtualConverter resourceChoice;
 	
 	public ConverterUseRequest(ConverterCard converterUsed, Player playerUsing, Game gameContext) {
 		p = playerUsing;
@@ -17,7 +17,7 @@ public class ConverterUseRequest {
 		g = gameContext;
 		requestType = "";
 		converterChoice = -1;
-		resourceChoice = null;
+		resourceChoice = new VirtualConverter();
 	}
 	
 	public void setRequestType(String request) {
@@ -28,7 +28,7 @@ public class ConverterUseRequest {
 		converterChoice = choice;
 	}
 	
-	public void setResourceChoice(ResourceCollection choice) {
+	public void setResourceChoice(VirtualConverter choice) {
 		resourceChoice = choice;
 	}
 	
@@ -52,7 +52,7 @@ public class ConverterUseRequest {
 		return converterChoice;
 	}
 	
-	public ConverterResourceChoice getResourceChoice() {
+	public VirtualConverter getResourceChoice() {
 		return resourceChoice;
 	}
 	

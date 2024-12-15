@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class GenericConverterCard implements Consumable {
+public class ConverterCard implements Consumable {
 	
 	// Each subarray of actions gives a class of converters/actions available at a given time
 	// actions[0] is the list of options for the card to enter play, actions[1] is the list of front-side converters,
@@ -16,7 +16,7 @@ public class GenericConverterCard implements Consumable {
 	private ArrayList<String> names;
 	
 	
-	public GenericConverterCard(ArrayList<ArrayList<ConverterFeatures>> allCardConverters, ArrayList<String> cardNames) {
+	public ConverterCard(ArrayList<ArrayList<ConverterFeatures>> allCardConverters, ArrayList<String> cardNames) {
 		// Invalid converter (must have at least an entry cost (can be null) and a normal conversion)
 		if (allCardConverters.size() < 2) {
 			return;
@@ -25,7 +25,7 @@ public class GenericConverterCard implements Consumable {
 		// Copying allCardConverters into actions
 		actions = new ArrayList<ArrayList<ConverterFeatures>>();
 		for (int i = 0; i < allCardConverters.size(); i++) {
-			subactions = new ArrayList<ConverterFeatures>();
+			ArrayList<ConverterFeatures> subactions = new ArrayList<ConverterFeatures>();
 			for (int j = 0; j < allCardConverters.get(i).size(); j++) {
 				subactions.add(allCardConverters.get(i).get(j).getCopy());
 			}
@@ -63,7 +63,7 @@ public class GenericConverterCard implements Consumable {
 	// See whether the other resource provided is the same resource as this
 	// If on opposite sides of the same card, will return unequal
 	public boolean equals(Object otherResource) {
-		return otherResource instanceof GenericConverterCard && this.getName().equals(((GenericConverterCard)otherResource).getName());
+		return otherResource instanceof ConverterCard && this.getName().equals(((ConverterCard)otherResource).getName());
 	}
 
 	// Allowing for hashing
@@ -112,7 +112,7 @@ public class GenericConverterCard implements Consumable {
 	// Returns a list of all the converters (not upgrade/entry) currently available to run
 	// If not in play, returns empty (since no converters can be run)
 	public ArrayList<ConverterFeatures> currentSideOptions() {
-		if (!isInPlay) {
+		if (!isInPlay()) {
 			return new ArrayList<ConverterFeatures>();
 		}
 		return new ArrayList<ConverterFeatures>(actions.get(2*currentSide-1));
@@ -211,7 +211,7 @@ public class GenericConverterCard implements Consumable {
 		displayConverterSide(enterPlayOptions());
 		if (isInPlay()) {
 			System.out.print("This card is in play ");
-			if (!isUpgraded) {
+			if (!isUpgraded()) {
 				System.out.println("on Side 1.");
 			}
 			else {

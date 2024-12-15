@@ -4,12 +4,6 @@ public class ConverterFeatures {
 	private Converter conv;
 	private String phase; // trade or economy
 	private boolean hasBeenRun; // whether the converter has been run or not this turn
-	
-	public ConverterFeatures() {
-		conv = new Converter();
-		phase = "";
-		hasBeenRun = false;
-	}
 
 	public ConverterFeatures(ResourceCollection inputResources, ResourceCollection outputResources) {
 		conv = new Converter(inputResources, outputResources);
@@ -18,7 +12,7 @@ public class ConverterFeatures {
 	}
 	
 	public ConverterFeatures getCopy() {
-		ConverterFeatures convFeat = new ConverterFeatures(getInputs(), getOutputs());
+		ConverterFeatures convFeat = new ConverterFeatures(conv.getInputs(), conv.getOutputs());
 		convFeat.setPhaseRun(getPhaseRun());
 		convFeat.hasBeenRun = this.hasBeenRun;
 		return convFeat;
@@ -43,7 +37,7 @@ public class ConverterFeatures {
 	}
 	
 	// Given the phase, runs the correct version of the converter
-	public boolean execute(Player p, ConverterResourceChoice resourceChoice) {
+	public boolean execute(Player p, VirtualConverter resourceChoice) {
 		if (!isEligibleToRun()) {
 			return false;
 		}
@@ -61,7 +55,7 @@ public class ConverterFeatures {
 	}
 	
 	public void display() {
-		super.display();
+		conv.display();
 		System.out.println("Runs during " + getPhaseRun());
 		if (!isEligibleToRun()) {
 			System.out.println("(Already been run this turn)");
